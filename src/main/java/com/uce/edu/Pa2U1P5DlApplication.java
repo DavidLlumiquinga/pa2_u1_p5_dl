@@ -16,12 +16,16 @@ public class Pa2U1P5DlApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("Hola mundo");
+		
 		System.out.println("Soy David Llumiquinga");
-		System.out.println("Cambio en las misma rama");
-		System.out.println("Cambio en una nueva rama Taller3");
-		System.out.println("Cambio del taller 3");
-		System.out.println("Estando en la rama taller3");
+		System.out.println("Estoy sexto semestre");
+		System.out.println("Programacion Avanzada 2");
 	}
 
 }
+
+/*Crear un proyecto nuevo subir 
+ * Crea cambio y subir al branch
+ * Crear cambio en nuevo branch
+ * 
+ */

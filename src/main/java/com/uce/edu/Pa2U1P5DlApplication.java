@@ -20,6 +20,8 @@ public class Pa2U1P5DlApplication implements CommandLineRunner {
 		System.out.println("Soy David Llumiquinga");
 		System.out.println("Cambio en las misma rama");
 		System.out.println("Cambio en una nueva rama Taller3");
+		System.out.println("Cambio del taller 3");
+		System.out.println("Estando en la rama taller3");
 	}
 
 }

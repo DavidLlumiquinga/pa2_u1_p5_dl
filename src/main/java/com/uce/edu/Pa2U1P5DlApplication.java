@@ -18,7 +18,6 @@ public class Pa2U1P5DlApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Soy David Llumiquinga");
-		System.out.println("Estoy sexto semestre");
 		System.out.println("Programacion Avanzada 2");
 	}
 

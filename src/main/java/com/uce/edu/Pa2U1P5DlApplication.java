@@ -19,6 +19,8 @@ public class Pa2U1P5DlApplication implements CommandLineRunner {
 		
 		System.out.println("Soy David Llumiquinga");
 		System.out.println("Programacion Avanzada 2");
+		System.out.println("Uso del github");
+		System.out.println("Parte 2");
 	}
 
 }

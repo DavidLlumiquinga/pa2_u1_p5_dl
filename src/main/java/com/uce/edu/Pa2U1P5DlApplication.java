@@ -1,13 +1,21 @@
 package com.uce.edu;
 
+import java.math.BigDecimal;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.uce.edu.ioc.di.Estudiante;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 
 @SpringBootApplication
 public class Pa2U1P5DlApplication implements CommandLineRunner {
+
+	@Autowired
+	private Estudiante estudiante;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U1P5DlApplication.class, args);
@@ -15,20 +23,12 @@ public class Pa2U1P5DlApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		
-		System.out.println("Soy David Llumiquinga");
-		System.out.println("Programacion Avanzada 2");
-		System.out.println("Uso del github");
-		System.out.println("Parte 2");
-		System.out.println("Cambio en el branch");
-		System.out.println("CAMBIO");
+		this.estudiante.setNombre("David");
+		this.estudiante.setApellido("Llumiquinga");
+		this.estudiante.setCedula("1725896110");
+		this.estudiante.setSalario(new BigDecimal(1000));
+		System.out.println(estudiante);
+
 	}
 
 }
-
-/*Crear un proyecto nuevo subir 
- * Crea cambio y subir al branch
- * Crear cambio en nuevo branch
- * 
- */

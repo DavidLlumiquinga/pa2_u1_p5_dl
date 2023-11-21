@@ -50,6 +50,8 @@ public class Pa2U1P5DlApplication implements CommandLineRunner {
 		this.iMateriaService.eliminar("M1");
 		mate=this.iMateriaService.buscar("M1");
 		System.out.println(mate);
+		
+		System.out.println("Prueba");
 	}
 
 }

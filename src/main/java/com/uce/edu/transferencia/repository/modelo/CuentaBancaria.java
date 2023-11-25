@@ -36,4 +36,10 @@ public class CuentaBancaria {
 		this.saldo = saldo;
 	}
 
+	@Override
+	public String toString() {
+		return "CuentaBancaria [numero=" + numero + ", cedulaPropietario=" + cedulaPropietario + ", saldo=" + saldo
+				+ "]";
+	}
+
 }

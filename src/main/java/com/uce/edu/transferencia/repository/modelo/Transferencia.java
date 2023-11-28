@@ -13,6 +13,7 @@ public class Transferencia {
 	private BigDecimal monto;
 	private CuentaBancaria cuentaOrigen;
 	private CuentaBancaria cuentaDestino;
+	private Integer numeroComprobante;
 
 	//GET : SET
 	public LocalDateTime getFecha() {
@@ -53,6 +54,16 @@ public class Transferencia {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+	
+	
+
+	public Integer getNumeroComprobante() {
+		return numeroComprobante;
+	}
+
+	public void setNumeroComprobante(Integer numeroComprobante) {
+		this.numeroComprobante = numeroComprobante;
 	}
 
 	@Override

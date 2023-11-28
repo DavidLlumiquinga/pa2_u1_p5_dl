@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.uce.edu.transferencia.repository.modelo.CuentaBancaria;
 
 @Repository
-public class CuentaBancariaImpl implements ICuentaBancariaRepository {
+public class CuentaBancariaRepositoryImpl implements ICuentaBancariaRepository {
 	private static List<CuentaBancaria> base = new ArrayList<CuentaBancaria>();
 
 	@Override
@@ -16,11 +16,23 @@ public class CuentaBancariaImpl implements ICuentaBancariaRepository {
 
 		for (CuentaBancaria cuenta : base) {
 			if (cuenta.getNumero().equals(numero)) {
-				CuentaBancaria cta=new CuentaBancaria();
+				CuentaBancaria cta = new CuentaBancaria();
 				cta.setCedulaPropietario(cuenta.getCedulaPropietario());
 				cta.setNumero(cuenta.getNumero());
 				cta.setSaldo(cuenta.getSaldo());
-				return cta;
+				return cuenta;
+			}
+		}
+		return null;
+	}
+
+
+	public CuentaBancaria seleccionarEliminar(String numero) {
+
+		for (CuentaBancaria cuenta : base) {
+			if (cuenta.getNumero().equals(numero)) {
+
+				return cuenta;
 			}
 		}
 		return null;
@@ -40,7 +52,7 @@ public class CuentaBancariaImpl implements ICuentaBancariaRepository {
 
 	@Override
 	public void eliminar(String numero) {
-		CuentaBancaria cuenta = this.seleccionar(numero);
+		CuentaBancaria cuenta = this.seleccionarEliminar(numero);
 		base.remove(cuenta);
 	}
 

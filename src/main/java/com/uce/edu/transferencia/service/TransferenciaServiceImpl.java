@@ -2,6 +2,7 @@ package com.uce.edu.transferencia.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,6 +82,12 @@ public class TransferenciaServiceImpl implements ITransferenciaService {
 			System.out.println("Saldo no disponible");
 		}
 
+	}
+
+	@Override
+	public List<Transferencia> seleccionarTodos() {
+		
+		return this.iTransferenciaRepository.seleccionarTodos();
 	}
 
 }

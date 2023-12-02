@@ -1,42 +1,26 @@
 package com.uce.edu;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.transferencia.repository.modelo.CuentaBancaria;
-import com.uce.edu.transferencia.repository.modelo.Transferencia;
-import com.uce.edu.transferencia.service.ICuentaBancariaService;
-import com.uce.edu.transferencia.service.ITransferenciaService;
+import com.uce.edu.inventario.repository.modelo.Bodega;
+import com.uce.edu.inventario.repository.modelo.Producto;
+import com.uce.edu.inventario.service.IBodegaService;
+import com.uce.edu.inventario.service.IInventarioService;
+import com.uce.edu.inventario.service.IProductoService;
 
 @SpringBootApplication
 public class Pa2U1P5DlApplication implements CommandLineRunner {
 
-	//DI por atributo
-	@Autowired
-	private ITransferenciaService iTransferenciaService;
-	
-	@Autowired
-	private ICuentaBancariaService bancariaService;
 
-	/*
-	 * DI for constructor
-	 * @Autowired public Pa2U1P5DlApplication(ITransferenciaService iTransServi) {
-	 * this.iTransferenciaService=iTransServi; }
-	 */
-
-	/*
-	 * DI for metodo set()
+	@Autowired 
+	private IProductoService iProductoService;
 	@Autowired
-	public void setiTransferenciaService(ITransferenciaService iTransferenciaService) {
-		this.iTransferenciaService = iTransferenciaService;
-	}
-	*/
+	private IBodegaService iBodegaService;
+	@Autowired
+	private IInventarioService iInventarioService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U1P5DlApplication.class, args);
@@ -45,41 +29,40 @@ public class Pa2U1P5DlApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		// 1.Crear las cuentas
-		CuentaBancaria ctaOrigen = new CuentaBancaria();
-		ctaOrigen.setCedulaPropietario("1725689611");
-		ctaOrigen.setNumero("12345");
-		ctaOrigen.setSaldo(new BigDecimal(100));
-		this.bancariaService.guardar(ctaOrigen);
+		Producto p1=new Producto();
+		p1.setCodigoBarras("123456");
+		p1.setNombre("HP 15 Laptop");
+		p1.setStock(0);
+		
+		this.iProductoService.guardar(p1);
+		
+		Producto p2=new Producto();
+		p2.setCodigoBarras("654321");
+		p2.setNombre("Teclado HP");
+		p2.setStock(0);
+		
+		this.iProductoService.guardar(p2);
 
-		CuentaBancaria ctaDestino = new CuentaBancaria();
-		ctaDestino.setCedulaPropietario("1725456895");
-		ctaDestino.setNumero("654321");
-		ctaDestino.setSaldo(new BigDecimal(200));
-		this.bancariaService.guardar(ctaDestino);
-
-		this.bancariaService.depositar("12345", new BigDecimal(200));
-		System.out.println(ctaOrigen);
-
-		this.iTransferenciaService.realizar("12345", "654321", new BigDecimal(50));
-
-		this.iTransferenciaService.realizar("12345", "654321", new BigDecimal(30));
-		this.iTransferenciaService.realizar("654321", "12345", new BigDecimal(10));
-
-		// Construir un estado de cuenta de todas las transferencia
-
-		List<Transferencia> lista = new ArrayList<>();
-		int indice = 0;
-		for (Transferencia trans : lista) {
-
-			indice++;
-			System.out.println(indice + " : " + trans);
-		}
-		CuentaBancaria ctaOrigen1 = this.bancariaService.buscar("12345");
-		System.out.println(ctaOrigen1);
-		CuentaBancaria ctaDestino1 = this.bancariaService.buscar("654321");
-		System.out.println(ctaDestino1);
-
+		
+		Bodega bodega=new Bodega();
+		bodega.setCapacidad(20);
+		bodega.setCodigo("789456");
+		bodega.setDireccion("San Rafael");
+		bodega.setNombre("SuperAnimo");
+		this.iBodegaService.guardar(bodega);
+		
+		
+		this.iInventarioService.registrar("654321", "123456", 50);
+		this.iInventarioService.registrar("654321", "654321", 100);
+		this.iInventarioService.registrar("654321", "123456", 20);
+		
+		
+		Producto num1=this.iProductoService.buscar("123456");
+		System.out.println("Producto 1"+num1.getStock());
+		
+		Producto num2=this.iProductoService.buscar("654321");
+		System.out.println("Producto 1"+num2.getStock());
+		
 	}
 
 }
